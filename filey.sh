@@ -13,11 +13,9 @@
 # -----
 
 # ----- CMD options analyze ----- Begin -----
-while getopts "d:s:i:c" filey_option; do
+while getopts "d:" filey_option; do
 	case $filey_option in
 		d) filey_path=$OPTARG ;;
-#		c) filey_chain=1 ;;
-#		i) filey_instance=$OPTARG ;;
 	esac
 done
 
@@ -33,11 +31,6 @@ if [ -z $filey_chain ]; then
 	mkdir $filey_path/filey-bench                                        # Creating working directory
 	filey_path=$filey_path/filey-bench                                   # Switching to it 
 	dd if=/dev/zero of=$filey_path/dummy${filey_counter} count=4 bs=1024 # Creaing dummy file
-
-#	filey_instance_counter=0 # Zero instance counter by default
-#	while [ "$filey_instance_counter" -le "$filey_instance" ]; do
-#		. $0 &
-#	done
 fi
 
 while true; do
